@@ -5,13 +5,11 @@ FROM dockerfile/java
 MAINTAINER Norbert Schneider  <mail@herr-norbert.de>
 
 RUN mkdir /minecraft
-RUN wget -O /minecraft/minecraft.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/minecraft_server.1.7.10.jar
+RUN mkdir /minecraft/data
+RUN wget -O /minecraft/minecraft.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.8/minecraft_server.1.8.jar
 RUN chmod +x /minecraft/minecraft.jar
 
-COPY ./config /minecraft/
-COPY ./world /minecraft/CSM/
-
-WORKDIR /minecraft
+WORKDIR /minecraft/data
 EXPOSE 25565
 
-CMD java -Xmx768M -Xms768M -jar minecraft.jar nogui
+CMD java -Xmx768M -Xms768M -jar ../minecraft.jar nogui
