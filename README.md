@@ -1,6 +1,18 @@
 docker-minecraft
 ================
 
-Minecraft server in a container.
+Minecraft server (1.8) in a container. Nothing special ...
 
-The server uses the provided configuration in 'config' and world in 'world'. To backup your data, just commit the changes in the container and push them to your DockerHub account.
+How to run
+================
+
+Make sure [docker][docker] is installed. To build the container clone the repository or create your own docker file based on this base [image][image].
+
+     > docker build -t "YOUR-TAG" .
+
+Start the container with the following command
+
+     > docker run -d -p 25565:25565 -v /HOST-PATH:/minecraft/data YOUR-TAG 
+
+[docker]: http://www.docker.io "docker"
+[image]: https://registry.hub.docker.com/u/bertschneider/minecraft/
